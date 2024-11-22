@@ -1,0 +1,16 @@
+:root {
+  --white: #fff;
+  --black: #000;
+  --error-red: #DB4141;
+  --grid-grey: #e5e5e5;
+  --grid-orange: #e58155;
+  --grid-color: var(--grid-grey);
+  --dark-grey: #3C3C3C;
+  --off-white: #F2F2F2;
+  --orange: #EC5909;
+  --light-orange: #FF9A63;
+  --sans: "Spezia", Arial, Helvetica, sans-serif;
+  --serif: "Relative Mono 10 Pitch Pro", Georgia, "Times New Roman", serif;
+  --global-line-height: 1.45em;
+  --logo-ratio: 0.54054;
+}
