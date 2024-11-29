@@ -3,7 +3,7 @@ import store from "../store";
 import { selectUser } from "../store/userSlice";
 import { getCurrentToken } from "../services/authService";
 
-const BASE_URL = "http://localhost:8000/api/v1";
+const BASE_URL = "https://fastapi-backend-neo4j-976350951517.europe-west2.run.app/api/v1"; // Instead of using the local host backend, we are going to use the API from the server
 
 const apiClient = axios.create({
     baseURL: BASE_URL,
@@ -16,14 +16,15 @@ const apiClient = axios.create({
 // Add dynamic headers with interceptors
 apiClient.interceptors.request.use(
     async (config) => {
+        try {
         const state = store.getState();
-        const user = selectUser(state);
+            const user = selectUser(state);
+            let token = user?.token || (await getCurrentToken());
 
-        // Use token from Redux or refresh if necessary
-        let token = user?.token;
-        if (!token) {
-            token = await getCurrentToken(); // Refresh and cache token if needed
-        }
+
+        // if (!token) {
+        //     token = await getCurrentToken(); // Refresh and cache token if needed
+        // }
 
         if (token) {
             config.headers["Authorization"] = `Bearer ${token}`;
@@ -31,8 +32,11 @@ apiClient.interceptors.request.use(
 
         if (user?.uid) {
             config.headers["RMS-User"] = user.uid;
+            console.log(config.headers["RMS-User"], "RMS USERS");
         }
-
+    } catch (error) {
+        console.error("Token retrieval failed:", error);
+    }
         return config;
     },
     (error) => Promise.reject(error)
@@ -56,6 +60,11 @@ export const makeRequest = async (method, endpoint, params = {}, data = {}, pagi
             params: queryParams,
             data,
         });
+
+        console.log("RESPONSE CALLED FROM API", response);
+        console.log("RESPONSE CALLED FROM API Data", response.data);
+
+        
         return { data: response.data, error: null };
     } catch (error) {
         return { data: null, error };

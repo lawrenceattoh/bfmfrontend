@@ -5,10 +5,20 @@ import { makeRequest } from "../api/apiClient";
 export const fetchData = createAsyncThunk(
     "api/fetchData",
     async ({ endpoint, method = "GET", params, data, pagination }, { rejectWithValue }) => {
-        const response = await makeRequest(method, endpoint, params, data, pagination);
-        return response.data || rejectWithValue(response.error);
+        try {
+            const response = await makeRequest(method, endpoint, params, data, pagination);
+            console.log("RESPONSE DATA ON GET API CALLED: ", response.data);
+            return response.data;
+        } catch (error) {
+            if (error.response?.status === 404) {
+                console.log("API Error: ", error.response.data);
+                return rejectWithValue({ notFound: true });
+            }
+            return rejectWithValue(error.response?.data || error.message);
+        }
     }
 );
+
 
 const apiSlice = createSlice({
     name: "api",

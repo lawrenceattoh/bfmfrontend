@@ -6,6 +6,7 @@ import {
     GoogleAuthProvider,
     onAuthStateChanged,
     signOut,
+    signInWithRedirect
 } from "firebase/auth";
 import { auth } from "../firebase/config";
 import { setUser, clearUser, setLoading } from "../store/userSlice";
@@ -65,15 +66,14 @@ export const initializeAuth = (dispatch) => {
 };
 
 // Sign in with Google
-export const signInWithGoogle = async (dispatch) => {
+export const signInWithGoogle = async () => {
+    const authGet = auth;  // Instead of auth Variable I renamed it to authGet because same name was casuing the error in callback
+    const provider = new GoogleAuthProvider();
     try {
-        const provider = new GoogleAuthProvider();
-        const result = await signInWithPopup(auth, provider);
-        const user = await parseFirebaseUser(result.user);
-        dispatch(setUser(user));
+        const result = await signInWithPopup(authGet, provider);  // passed the token from the auth to signInWithPopup Of Google 
+        return result.user; // Make sure you're returning the user object here
     } catch (error) {
-        console.error("Google Sign-In failed:", error);
-        throw new Error("Google Sign-In failed. Please try again.");
+        throw error;
     }
 };
 
@@ -82,7 +82,11 @@ export const signOutUser = async (dispatch) => {
     try {
         await signOut(auth);
         dispatch(clearUser()); // Clear user state in Redux
+        console.log("Cached sign out token returned before user sign out : ",cachedToken);
+        
         cachedToken = null; // Clear cached token
+        console.log("Cached sign out token returned after user sign out : ",cachedToken);
+
     } catch (error) {
         console.error("Sign out error:", error);
         throw new Error("Sign out failed. Please try again.");
@@ -92,7 +96,9 @@ export const signOutUser = async (dispatch) => {
 // Utility to get the current token (cached or refreshed)
 export const getCurrentToken = async () => {
     try {
+        console.log("Returned current token: ", refreshTokenIfNeeded());
         return await refreshTokenIfNeeded();
+        
     } catch (error) {
         console.error("Failed to refresh token:", error);
         return null;

@@ -2,15 +2,15 @@ import {initializeApp} from "firebase/app";
 import {getAuth} from "firebase/auth";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDrIUeTvVZw2FqkmH64YzMv6TyvYc_n6d8",
-    authDomain: "rms-dev-e3394.firebaseapp.com",
-    projectId: "rms-dev-e3394",
-    storageBucket: "rms-dev-e3394.firebasestorage.app",
-    messagingSenderId: "110041080836",
-    appId: "1:110041080836:web:971d47538804d67b7a4151"
-};
+    apiKey: "AIzaSyBZqwxfANm1bXIzey-1p5UU4TuuBdr9VX8",
+    authDomain: "bfm-sandbox.firebaseapp.com",
+    projectId: "bfm-sandbox",
+    storageBucket: "bfm-sandbox.appspot.com",
+    messagingSenderId: "976350951517",
+    appId: "1:976350951517:web:bd26f986b1877c1038f5b4"
+  };
 
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+const auth = getAuth(app);  // Token was not returning the actual value it was null, so its fixed up
 
 export {auth};

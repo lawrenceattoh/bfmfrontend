@@ -1,7 +1,7 @@
 const writerSchema = [
-    {key: "id", label: "ID", displayType: "text", isFilterable: true},
-    {key: "alias", label: "Name", displayType: "text", isFilterable: true},
-    {key: "ipi", label: "IPI", displayType: "text", isFilterable: true},
+    {key: "id", label: "Id", displayType: "text", isFilterable: true},
+    {key: "name", label: "Name", displayType: "text", isFilterable: true},
+    // {key: "image_url", label: "Image URL", displayType: "text", isFilterable: true},
 ];
 
 export default writerSchema;

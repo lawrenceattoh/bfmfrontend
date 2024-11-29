@@ -50,7 +50,7 @@ const WorkDetailPage = () => {
     useEffect(() => {
         const fetchOptions = async () => {
             const [writersRes, publishersRes, dealsRes] = await Promise.all([
-                makeRequest("GET", "/writers"),
+                makeRequest("GET", "/api/search/artist", { q: "pop", limit: 10, offset: 0, order: "asc" }),
                 makeRequest("GET", "/publishers"),
                 makeRequest("GET", "/deals"),
             ]);

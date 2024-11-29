@@ -26,14 +26,12 @@ function AppContent() {
     }
 
     return user ? (
-        <Box display="flex" flexDirection="column" minHeight="10vh">
-            <NavBar/>
-            <Box component="main" flexGrow={1} mt={8}>
-                <Container maxWidth="xl">
-                    <ApiRouter/>
-                </Container>
-            </Box>
-        </Box>
+        <div className="flex h-screen overflow-hidden bg-gray-900 w-screen ">
+        <Navbar />
+        <div className="flex flex-grow-1 overflow-y-auto overflow-hidden w-screen">
+          <ApiRouter />
+        </div>
+      </div>
     ) : (
         <SignInScreen/>
     );
