@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {CssBaseline, Box, Container, CircularProgress} from '@mui/material';
 import {Provider, useDispatch, useSelector} from 'react-redux';
-import NavBar from './components/NavBar';
+// import NavBar from './components/NavBar';
 import store from "./store/index.jsx";
 import {ApiRouter} from "./components/ApiRouter.jsx";
 import {initializeAuth} from './services/authService';

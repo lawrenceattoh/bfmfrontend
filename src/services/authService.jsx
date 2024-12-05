@@ -71,7 +71,9 @@ export const signInWithGoogle = async () => {
     const provider = new GoogleAuthProvider();
     try {
         const result = await signInWithPopup(authGet, provider);  // passed the token from the auth to signInWithPopup Of Google 
+        console.log("Signing in with Google USER RETURNED DATA: ",result.user);
         return result.user; // Make sure you're returning the user object here
+
     } catch (error) {
         throw error;
     }

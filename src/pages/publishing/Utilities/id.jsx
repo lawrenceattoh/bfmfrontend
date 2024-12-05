@@ -11,55 +11,43 @@ import {
   FaTwitter,
 } from "react-icons/fa";
 
-const ArtistDetailPage = () => {
-  const { artistId } = useParams(); // Retrieve artist ID from URL params
+const UtilitiesDetailPage = () => {
+  const { UtilitiesId } = useParams(); // Retrieve Utilities ID from URL params
   const navigate = useNavigate();
 
-
-  const user = auth.currentUser;
-  if (user) {
-      cachedToken = user.getIdToken();
-      lastTokenFetchTime = now;
-
-      console.log("ArtistDetailPage Cached", cachedToken);
-      
-  } else {
-      cachedToken = null;
-  }
-
-  const [artist, setArtist] = useState(null);
+  const [Utilities, setUtilities] = useState(null);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false); // For dropdown menu
 
   useEffect(() => {
-    const fetchArtistDetails = async () => {
-      const { data, error } = await makeRequest("GET", `/artists/${artistId}`);
+    const fetchUtilitiesDetails = async () => {
+      const { data, error } = await makeRequest("GET", `/Utilities/${UtilitiesId}`);
       if (!error) {
-        setArtist(data);
+        setUtilities(data);
       }
       setLoading(false);
     };
-    fetchArtistDetails();
-  }, [artistId]);
+    fetchUtilitiesDetails();
+  }, [UtilitiesId]);
 
   const handleTabChange = (index) => {
     setActiveTab(index);
   };
 
   const handleEdit = () => {
-    navigate(`/artists/edit/${artistId}`);
+    navigate(`/Utilitiess/edit/${UtilitiesId}`);
     setIsMenuOpen(false); // Close menu
   };
 
   const handleDelete = async () => {
     const confirmed = window.confirm(
-      "Are you sure you want to delete this artist?"
+      "Are you sure you want to delete this Utilities?"
     );
     if (confirmed) {
-      const { error } = await makeRequest("DELETE", `/artists/${artistId}`);
+      const { error } = await makeRequest("DELETE", `/Utilitiess/${UtilitiesId}`);
       if (!error) {
-        navigate("/artists"); // Redirect to the artist list page
+        navigate("/Utilitiess"); // Redirect to the Utilities list page
       }
     }
     setIsMenuOpen(false); // Close menu
@@ -77,21 +65,21 @@ const ArtistDetailPage = () => {
     );
   }
 
-  if (!artist) {
+  if (!Utilities) {
     return (
       <div className="flex justify-center items-center min-h-screen bg-gray-900 text-white">
-        <p className="text-red-500">Artist not found</p>
+        <p className="text-red-500">Utilities not found</p>
       </div>
     );
   }
 
   const socialLinks = [
-    { platform: "Spotify", url: artist.spotify_id, icon: <FaSpotify /> },
-    { platform: "Apple Music", url: artist.apple_music_id, icon: <FaApple /> },
-    { platform: "YouTube", url: artist.youtube_id, icon: <FaYoutube /> },
-    { platform: "Facebook", url: artist.facebook_id, icon: <FaFacebook /> },
-    { platform: "Instagram", url: artist.instagram_id, icon: <FaInstagram /> },
-    { platform: "Twitter", url: artist.twitter_id, icon: <FaTwitter /> },
+    { platform: "Spotify", url: Utilities.spotify_id, icon: <FaSpotify /> },
+    { platform: "Apple Music", url: Utilities.apple_music_id, icon: <FaApple /> },
+    { platform: "YouTube", url: Utilities.youtube_id, icon: <FaYoutube /> },
+    { platform: "Facebook", url: Utilities.facebook_id, icon: <FaFacebook /> },
+    { platform: "Instagram", url: Utilities.instagram_id, icon: <FaInstagram /> },
+    { platform: "Twitter", url: Utilities.twitter_id, icon: <FaTwitter /> },
   ].filter((link) => link.url); // Filter out null or undefined links
 
   return (
@@ -101,15 +89,15 @@ const ArtistDetailPage = () => {
       {/* Image Section */}
       <div className="mt-3">
         <img
-          src={artist.image_url}
-          alt={artist.name}
+          src={Utilities.image_url}
+          alt={Utilities.name}
           className="w-32 h-32 rounded-full object-cover"
         />
       </div>
   
       {/* Content Section */}
       <div className="flex-1 mt-4">
-        <h1 className="text-4xl font-bold">{artist.name}</h1>
+        <h1 className="text-4xl font-bold">{Utilities.name}</h1>
         <div className="flex gap-4 mt-2">
           {socialLinks.map((link, index) => (
             <a
@@ -123,7 +111,7 @@ const ArtistDetailPage = () => {
             </a>
           ))}
         </div>
-        <p className="mt-4 text-gray-300 leading-relaxed">{artist.bio}</p>
+        <p className="mt-4 text-gray-300 leading-relaxed">{Utilities.bio}</p>
       </div>
   
       {/* Menu Section */}
@@ -184,4 +172,4 @@ const ArtistDetailPage = () => {
   );
 };
 
-export default ArtistDetailPage;
+export default UtilitiesDetailPage;

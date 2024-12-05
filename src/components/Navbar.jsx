@@ -11,45 +11,50 @@ import {
   List,
   ListItemButton,
   ListSubheader,
-  InputBase,
   Divider,
   IconButton,
   Tooltip,
   ListItemText,
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import {
-  Search as SearchIcon,
-  HelpOutline as HelpIcon,
-  Menu as MenuIcon,
-  Palette as PaletteIcon,
-  Album,
-  MusicNote,
-  Piano,
-  EditNote,
-  Publish,
-  Mic,
-  Sell,
-} from "@mui/icons-material";
 import { useSelector, useDispatch } from "react-redux";
 import { signOutUser } from "../services/authService";
-import { FaChevronLeft, FaChevronRight, FaSignOutAlt } from "react-icons/fa";
+
+import {
+  Buildings,
+  Tag,
+  PaintBrush,
+  Microphone,
+  MusicNotes,
+  Disc,
+  ShoppingBag,
+  FileText,
+  PianoKeys,
+  Upload,
+  Wrench,
+  SignOut,
+  CaretLeft,
+  CaretRight,
+} from "phosphor-react";
 
 const navData = {
-  deals: [{ label: "Deals", route: "/deals", icon: <Sell /> }],
+  general: [
+    { label: "Business Entities", route: "/business-entities", icon: <Buildings size={20} /> },
+    { label: "Deals", route: "/deals", icon: <Tag size={20} /> },
+  ],
   recordings: [
-    { label: "Artists", route: "/artists", icon: <PaletteIcon /> },
-    { label: "Recordings", route: "/recordings/recordings", icon: <Mic /> },
-    { label: "Tracks", route: "/recordings/tracks", icon: <MusicNote /> },
-    { label: "Releases", route: "/recordings/releases", icon: <Album /> },
-    { label: "Products", route: "/recordings/products", icon: <Sell /> },
+    { label: "Artists", route: "/artists", icon: <PaintBrush size={20} /> },
+    { label: "Recordings", route: "/recordings/recordings", icon: <Microphone size={20} /> },
+    { label: "Tracks", route: "/recordings/tracks", icon: <MusicNotes size={20} /> },
+    { label: "Releases", route: "/recordings/releases", icon: <Disc size={20} /> },
+    { label: "Products", route: "/recordings/products", icon: <ShoppingBag size={20} /> },
   ],
   publishing: [
-    { label: "Writers", route: "/publishing/writers", icon: <EditNote /> },
-    { label: "Works", route: "/publishing/works", icon: <Piano /> },
-    { label: "Publishers", route: "/publishing/publishers", icon: <Publish /> },
+    { label: "Writers", route: "/publishing/writers", icon: <FileText size={20} /> },
+    { label: "Works", route: "/publishing/works", icon: <PianoKeys size={20} /> },
+    { label: "Publishers", route: "/publishing/publishers", icon: <Upload size={20} /> },
   ],
-  utilities: [{ label: "Utilities", route: "/utils", icon: <Publish /> }],
+  utilities: [{ label: "Utilities", route: "/utilities", icon: <Wrench size={20} /> }],
 };
 
 function Navbar() {
@@ -115,7 +120,7 @@ function Navbar() {
         }}
         onClick={() => setDrawerExpanded((prev) => !prev)}
       >
-        {drawerExpanded ? <FaChevronLeft /> : <FaChevronRight />}
+        {drawerExpanded ? <CaretLeft size={20} /> : <CaretRight size={20} />}
       </IconButton>
 
       {/* User Profile */}
@@ -191,7 +196,7 @@ function Navbar() {
           mt: "auto",
         }}
       >
-        <FaSignOutAlt />
+        <SignOut size={20} />
         {drawerExpanded && <ListItemText primary="Sign Out" sx={{ ml: 2 }} />}
       </ListItemButton>
     </Box>

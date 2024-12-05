@@ -9,11 +9,20 @@ import {TestPage} from "../pages/TestPage.jsx";
 import SignInScreen from "./Auth/SignInScreen.jsx";
 import ArtistListPage from "../pages/common/Artists/index.jsx";
 import ArtistDetailPage from "../pages/common/Artists/id.jsx";
+import BusinessEntitiesListPage from "../pages/common/Business-Entities/index.jsx";
+import UtilitiesListPage from "../pages/publishing/utilities/index.jsx";
+import FileUploaderPage from "../pages/publishing/Utilities/FileUploaderPage.jsx";
+import BusinessEntitiesDetailPage from "../pages/common/Business-Entities/id.jsx";
 
 export const ApiRouter = () => {
     return (
         <>
             <Routes>
+
+  {/* BusinessEntities */}
+  <Route path='/business-entities' element={<BusinessEntitiesListPage />}/>
+  <Route path='/business-entities/:BusinessEntitiesId' element={<BusinessEntitiesDetailPage />}/>
+
 
                      {/* Artists */}
                      <Route path='/artists' element={<ArtistListPage/>}/>
@@ -39,6 +48,12 @@ export const ApiRouter = () => {
                 <Route path='/deals' element={<DealsListPage/>}/>
 
             <Route path="/signin" element={<SignInScreen />} />  {/* Add the sign-in route so it can be called at the time of logout */}
+
+            
+                {/* Utilities */}
+                <Route path='/utilities' element={<UtilitiesListPage/>}/>
+                <Route path="/utilities/file-uploader" element={<FileUploaderPage />} />
+
 
                 <Route path={'/test'} element={<TestPage/>}/>
             </Routes>
