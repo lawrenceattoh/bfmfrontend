@@ -59,7 +59,7 @@ const UtilitiesDetailPage = () => {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center min-h-screen bg-gray-900 text-white">
+      <div className="flex justify-center items-center min-h-screen bg-[#121212] text-white">
         <div className="loader">Loading...</div>
       </div>
     );
@@ -67,7 +67,7 @@ const UtilitiesDetailPage = () => {
 
   if (!Utilities) {
     return (
-      <div className="flex justify-center items-center min-h-screen bg-gray-900 text-white">
+      <div className="flex justify-center items-center min-h-screen bg-[#121212] text-white">
         <p className="text-red-500">Utilities not found</p>
       </div>
     );
@@ -83,7 +83,7 @@ const UtilitiesDetailPage = () => {
   ].filter((link) => link.url); // Filter out null or undefined links
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white py-8 px-20 ml-6 w-full">
+    <div className="min-h-screen bg-[#121212] text-white py-8 px-20 ml-6 w-full">
     {/* Header Section */}
     <div className="relative flex items-start gap-6">
       {/* Image Section */}

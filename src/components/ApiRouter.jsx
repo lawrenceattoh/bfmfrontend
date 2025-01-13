@@ -1,8 +1,8 @@
 import {Route, Routes, Navigate} from "react-router-dom";
-import Writers from "../pages/publishing/Writers/index.jsx";
+import Writers from "../pages/publishing/writers/index.jsx";
 import Deals from "../pages/common/Deals/index.jsx";
 import DealsListPage from "../pages/common/Deals/index.jsx";
-import WriterDetailPage from "../pages/publishing/Writers/id.jsx";
+import WriterDetailPage from "../pages/publishing/writers/id.jsx";
 import WorksListPage from "../pages/publishing/Works/index.jsx";
 import WorksDetailPage from "../pages/publishing/Works/id.jsx";
 import {TestPage} from "../pages/TestPage.jsx";
@@ -13,6 +13,11 @@ import BusinessEntitiesListPage from "../pages/common/Business-Entities/index.js
 import UtilitiesListPage from "../pages/publishing/utilities/index.jsx";
 import FileUploaderPage from "../pages/publishing/Utilities/FileUploaderPage.jsx";
 import BusinessEntitiesDetailPage from "../pages/common/Business-Entities/id.jsx";
+import DealDetailPage from "../pages/common/Deals/id.jsx";
+import ManageAttachmentsPage from "../pages/common/Business-Entities/ManageAttachmentsPage.jsx";
+import UserManagement from "../pages/publishing/Utilities/UserManagement.jsx";
+import TracksListPage from "../pages/common/Tracks/index.jsx";
+import TracksDetailsPage from "../pages/common/Tracks/id.jsx";
 
 export const ApiRouter = () => {
     return (
@@ -21,7 +26,9 @@ export const ApiRouter = () => {
 
   {/* BusinessEntities */}
   <Route path='/business-entities' element={<BusinessEntitiesListPage />}/>
-  <Route path='/business-entities/:BusinessEntitiesId' element={<BusinessEntitiesDetailPage />}/>
+  <Route path='/BE/:BusinessEntitiesId' element={<BusinessEntitiesDetailPage />}/>
+  <Route path="/BE/:BusinessEntitiesId/:BusinessEntitiesName/attachments/manage" element={<ManageAttachmentsPage />} />
+
 
 
                      {/* Artists */}
@@ -30,22 +37,28 @@ export const ApiRouter = () => {
                 <Route path="/artists/:artistId" element={<ArtistDetailPage />} />
 
                 {/* Writers */}
-                <Route path='/publishing/writers' element={<Writers/>}/>
-                <Route path='/publishing/writers/:id' element={<WriterDetailPage/>}/>
+                <Route path='/writers' element={<Writers/>}/>
+                <Route path='/writers/:id' element={<WriterDetailPage/>}/>
 
                 {/* Works */}
-                <Route path='/publishing/works' element={<WorksListPage/>}/>
-                <Route path='/publishing/works/:id' element={<WorksDetailPage/>}/>
+                <Route path='/works' element={<WorksListPage/>}/>
+                <Route path='/works/:id' element={<WorksDetailPage/>}/>
 
                 {/* Flexible route for nested works */}
                 <Route
-                    path='/publishing/writers/:writerId/works/:id'
+                    path='/writers/:writerId/works/:id'
                     element={<Navigate to="../works/:id" replace/>}
                 />
 
-                {/* Deals */}
-                {/* <Route path='/deals' element={<Deals/>}/> */}
-                <Route path='/deals' element={<DealsListPage/>}/>
+             {/* Deals */}
+<Route path="/deals" element={<DealsListPage />} />
+<Route path="/deals/:dealId" element={<DealDetailPage />} />
+
+             {/* Tracks */}
+             <Route path="/tracks" element={<TracksListPage />} />
+
+<Route path="/tracks/:trackId" element={<TracksDetailsPage />} />
+
 
             <Route path="/signin" element={<SignInScreen />} />  {/* Add the sign-in route so it can be called at the time of logout */}
 
@@ -53,6 +66,8 @@ export const ApiRouter = () => {
                 {/* Utilities */}
                 <Route path='/utilities' element={<UtilitiesListPage/>}/>
                 <Route path="/utilities/file-uploader" element={<FileUploaderPage />} />
+                <Route path="/utilities/user-management" element={<UserManagement />} />
+
 
 
                 <Route path={'/test'} element={<TestPage/>}/>

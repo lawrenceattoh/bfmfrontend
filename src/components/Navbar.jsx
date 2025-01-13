@@ -22,13 +22,13 @@ import { signOutUser } from "../services/authService";
 
 import {
   Buildings,
-  Tag,
+  Handshake,
   PaintBrush,
   Microphone,
   MusicNotes,
   Disc,
   ShoppingBag,
-  FileText,
+  Pen,
   PianoKeys,
   Upload,
   Wrench,
@@ -40,19 +40,19 @@ import {
 const navData = {
   general: [
     { label: "Business Entities", route: "/business-entities", icon: <Buildings size={20} /> },
-    { label: "Deals", route: "/deals", icon: <Tag size={20} /> },
+    { label: "Deals", route: "/deals", icon: <Handshake size={20} /> },
   ],
   recordings: [
     { label: "Artists", route: "/artists", icon: <PaintBrush size={20} /> },
-    { label: "Recordings", route: "/recordings/recordings", icon: <Microphone size={20} /> },
-    { label: "Tracks", route: "/recordings/tracks", icon: <MusicNotes size={20} /> },
-    { label: "Releases", route: "/recordings/releases", icon: <Disc size={20} /> },
-    { label: "Products", route: "/recordings/products", icon: <ShoppingBag size={20} /> },
+    { label: "Recordings", route: "/recordings", icon: <Microphone size={20} /> },
+    { label: "Tracks", route: "/tracks", icon: <MusicNotes size={20} /> },
+    // { label: "Releases", route: "/releases", icon: <Disc size={20} /> },
+    // { label: "Products", route: "/products", icon: <ShoppingBag size={20} /> },
   ],
   publishing: [
-    { label: "Writers", route: "/publishing/writers", icon: <FileText size={20} /> },
-    { label: "Works", route: "/publishing/works", icon: <PianoKeys size={20} /> },
-    { label: "Publishers", route: "/publishing/publishers", icon: <Upload size={20} /> },
+    { label: "Writers", route: "/writers", icon: <Pen size={20} /> },
+    { label: "Works", route: "/works", icon: <PianoKeys size={20} /> },
+    // { label: "Publishers", route: "/publishing/publishers", icon: <Upload size={20} /> },
   ],
   utilities: [{ label: "Utilities", route: "/utilities", icon: <Wrench size={20} /> }],
 };

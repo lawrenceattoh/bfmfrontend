@@ -1,0 +1,2600 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+      "title": "FastAPI",
+      "version": "0.1.0"
+    },
+    "paths": {
+      "/api/v1/works/": {
+        "get": {
+          "tags": [
+            "publishing",
+            "works",
+            "works"
+          ],
+          "summary": "Get Works",
+          "operationId": "get_works_api_v1_works__get",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "description": "ID of the writer",
+                "title": "Id"
+              },
+              "description": "ID of the writer"
+            },
+            {
+              "name": "name",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "description": "Name of the writer - will partially match",
+                "title": "Name"
+              },
+              "description": "Name of the writer - will partially match"
+            },
+            {
+              "name": "status",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "description": "Writer node status",
+                "title": "Status"
+              },
+              "description": "Writer node status"
+            },
+            {
+              "name": "iswc",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "description": "Writers IPI number ",
+                "title": "Iswc"
+              },
+              "description": "Writers IPI number "
+            },
+            {
+              "name": "offset",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "default": 0,
+                "title": "Offset"
+              }
+            },
+            {
+              "name": "limit",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "default": 10,
+                "title": "Limit"
+              }
+            },
+            {
+              "name": "order",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "default": "asc",
+                "title": "Order"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+  
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "publishing",
+            "works",
+            "works"
+          ],
+          "summary": "Create Work",
+          "operationId": "create_work_api_v1_works__post",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateWork"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+  
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/works/{work_id}": {
+        "get": {
+          "tags": [
+            "publishing",
+            "works",
+            "works"
+          ],
+          "summary": "Get Work",
+          "operationId": "get_work_api_v1_works__work_id__get",
+          "parameters": [
+            {
+              "name": "work_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "Work Id"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+  
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "patch": {
+          "tags": [
+            "publishing",
+            "works",
+            "works"
+          ],
+          "summary": "Update Work",
+          "operationId": "update_work_api_v1_works__work_id__patch",
+          "parameters": [
+            {
+              "name": "work_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "Work Id"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateWork"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+  
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/writers/": {
+        "get": {
+          "tags": [
+            "publishing",
+            "writers",
+            "writers"
+          ],
+          "summary": "Get Writers",
+          "operationId": "get_writers_api_v1_writers__get",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "description": "ID of the writer",
+                "title": "Id"
+              },
+              "description": "ID of the writer"
+            },
+            {
+              "name": "name",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "description": "Name of the writer - will partially match",
+                "title": "Name"
+              },
+              "description": "Name of the writer - will partially match"
+            },
+            {
+              "name": "ipi",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "description": "Writers IPI number",
+                "title": "Ipi"
+              },
+              "description": "Writers IPI number"
+            },
+            {
+              "name": "offset",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "default": 0,
+                "title": "Offset"
+              }
+            },
+            {
+              "name": "limit",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "default": 10,
+                "title": "Limit"
+              }
+            },
+            {
+              "name": "order",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "default": "asc",
+                "title": "Order"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+  
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "publishing",
+            "writers",
+            "writers"
+          ],
+          "summary": "Create Writer",
+          "operationId": "create_writer_api_v1_writers__post",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseWriter"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+  
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/writers/{writer_id}": {
+        "get": {
+          "tags": [
+            "publishing",
+            "writers",
+            "writers"
+          ],
+          "summary": "Get Writer",
+          "operationId": "get_writer_api_v1_writers__writer_id__get",
+          "parameters": [
+            {
+              "name": "writer_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "Writer Id"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+  
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/writers/{writer_id}/deals": {
+        "get": {
+          "tags": [
+            "publishing",
+            "writers",
+            "writers"
+          ],
+          "summary": "Get Writer Deals",
+          "operationId": "get_writer_deals_api_v1_writers__writer_id__deals_get",
+          "parameters": [
+            {
+              "name": "writer_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "Writer Id"
+              }
+            },
+            {
+              "name": "offset",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "default": 0,
+                "title": "Offset"
+              }
+            },
+            {
+              "name": "limit",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "default": 10,
+                "title": "Limit"
+              }
+            },
+            {
+              "name": "order",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "default": "asc",
+                "title": "Order"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+  
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/writers/{writer_id}/works": {
+        "get": {
+          "tags": [
+            "publishing",
+            "writers",
+            "writers"
+          ],
+          "summary": "Get Writer Works",
+          "operationId": "get_writer_works_api_v1_writers__writer_id__works_get",
+          "parameters": [
+            {
+              "name": "writer_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "Writer Id"
+              }
+            },
+            {
+              "name": "offset",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "default": 0,
+                "title": "Offset"
+              }
+            },
+            {
+              "name": "limit",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "default": 10,
+                "title": "Limit"
+              }
+            },
+            {
+              "name": "order",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "default": "asc",
+                "title": "Order"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+  
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/publishers/": {
+        "get": {
+          "tags": [
+            "publishing",
+            "publishers",
+            "writers"
+          ],
+          "summary": "Get Publisher",
+          "operationId": "get_publisher_api_v1_publishers__get",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "description": "ID of the publisher",
+                "title": "Id"
+              },
+              "description": "ID of the publisher"
+            },
+            {
+              "name": "name",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "description": "Name of the publisher- will partially match",
+                "title": "Name"
+              },
+              "description": "Name of the publisher- will partially match"
+            },
+            {
+              "name": "ipi",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "description": "Writers IPI publisher",
+                "title": "Ipi"
+              },
+              "description": "Writers IPI publisher"
+            },
+            {
+              "name": "offset",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "default": 0,
+                "title": "Offset"
+              }
+            },
+            {
+              "name": "limit",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "default": 10,
+                "title": "Limit"
+              }
+            },
+            {
+              "name": "order",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "default": "asc",
+                "title": "Order"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+  
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/publishers/{pub_id}": {
+        "get": {
+          "tags": [
+            "publishing",
+            "publishers",
+            "writers"
+          ],
+          "summary": "Get Publisher",
+          "operationId": "get_publisher_api_v1_publishers__pub_id__get",
+          "parameters": [
+            {
+              "name": "pub_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "Pub Id"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+  
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/deals/": {
+        "post": {
+          "tags": [
+            "common",
+            "deals"
+          ],
+          "summary": "Create Deal",
+          "operationId": "create_deal_api_v1_deals__post",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateDeal"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/DealResponse"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "common",
+            "deals"
+          ],
+          "summary": "Get Deals",
+          "operationId": "get_deals_api_v1_deals__get",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "description": "ID of the deal",
+                "title": "Id"
+              },
+              "description": "ID of the deal"
+            },
+            {
+              "name": "name",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "description": "Deal name",
+                "title": "Name"
+              },
+              "description": "Deal name"
+            },
+            {
+              "name": "rights-type",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "description": "Rights type associated with deal",
+                "title": "Rights-Type"
+              },
+              "description": "Rights type associated with deal"
+            },
+            {
+              "name": "writer_id",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "description": "Writer ID",
+                "title": "Writer Id"
+              },
+              "description": "Writer ID"
+            },
+            {
+              "name": "offset",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "default": 0,
+                "title": "Offset"
+              }
+            },
+            {
+              "name": "limit",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "default": 10,
+                "title": "Limit"
+              }
+            },
+            {
+              "name": "order",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "default": "asc",
+                "title": "Order"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/MultiDealResponse"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/deals/{deal_id}": {
+        "get": {
+          "tags": [
+            "common",
+            "deals"
+          ],
+          "summary": "Get Deal",
+          "operationId": "get_deal_api_v1_deals__deal_id__get",
+          "parameters": [
+            {
+              "name": "deal_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "Deal Id"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/DealResponse"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "patch": {
+          "tags": [
+            "common",
+            "deals"
+          ],
+          "summary": "Update Deal",
+          "operationId": "update_deal_api_v1_deals__deal_id__patch",
+          "parameters": [
+            {
+              "name": "deal_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "Deal Id"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateDeal"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/DealResponse"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/business-entities/": {
+        "get": {
+          "tags": [
+            "common",
+            "business-entities"
+          ],
+          "summary": "Get Business Entities",
+          "operationId": "get_business_entities_api_v1_business_entities__get",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "description": "Group ID",
+                "title": "Id"
+              },
+              "description": "Group ID"
+            },
+            {
+              "name": "name",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "description": "Group name",
+                "title": "Name"
+              },
+              "description": "Group name"
+            },
+            {
+              "name": "deal_name",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "description": "Related Deal Name",
+                "title": "Deal Name"
+              },
+              "description": "Related Deal Name"
+            },
+            {
+              "name": "offset",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "default": 0,
+                "title": "Offset"
+              }
+            },
+            {
+              "name": "limit",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "default": 10,
+                "title": "Limit"
+              }
+            },
+            {
+              "name": "order",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "default": "asc",
+                "title": "Order"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/MultiBusinessEntityResponse"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "common",
+            "business-entities"
+          ],
+          "summary": "Create Business Group",
+          "operationId": "create_business_group_api_v1_business_entities__post",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseBusinessEntity"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BusinessEntityResponse"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/business-entities/{business_entity_id}": {
+        "get": {
+          "tags": [
+            "common",
+            "business-entities"
+          ],
+          "summary": "Get Business Group",
+          "operationId": "get_business_group_api_v1_business_entities__business_entity_id__get",
+          "parameters": [
+            {
+              "name": "business_entity_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "Business Entity Id"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BusinessEntityResponse"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "patch": {
+          "tags": [
+            "common",
+            "business-entities"
+          ],
+          "summary": "Update Business Group",
+          "operationId": "update_business_group_api_v1_business_entities__business_entity_id__patch",
+          "parameters": [
+            {
+              "name": "business_entity_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "Business Entity Id"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseBusinessEntity"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BusinessEntityResponse"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "common",
+            "business-entities"
+          ],
+          "summary": "Delete Business Group",
+          "operationId": "delete_business_group_api_v1_business_entities__business_entity_id__delete",
+          "parameters": [
+            {
+              "name": "business_entity_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "Business Entity Id"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/DeleteResponse"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/import/schedule/publishing": {
+        "post": {
+          "tags": [
+            "common",
+            "load"
+          ],
+          "summary": "Load File",
+          "operationId": "load_file_api_v1_import_schedule_publishing_post",
+          "requestBody": {
+            "content": {
+              "multipart/form-data": {
+                "schema": {
+                  "$ref": "#/components/schemas/Body_load_file_api_v1_import_schedule_publishing_post"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+  
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/import/schedule/recordings": {
+        "post": {
+          "tags": [
+            "common",
+            "load"
+          ],
+          "summary": "Load File",
+          "operationId": "load_file_api_v1_import_schedule_recordings_post",
+          "requestBody": {
+            "content": {
+              "multipart/form-data": {
+                "schema": {
+                  "$ref": "#/components/schemas/Body_load_file_api_v1_import_schedule_recordings_post"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+  
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/users/": {
+        "get": {
+          "tags": [
+            "common",
+            "users"
+          ],
+          "summary": "Get Users",
+          "operationId": "get_users_api_v1_users__get",
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Users-Output"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "common",
+            "users"
+          ],
+          "summary": "Create User",
+          "operationId": "create_user_api_v1_users__post",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+  
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "common",
+            "users"
+          ],
+          "summary": "Delete User",
+          "operationId": "delete_user_api_v1_users__delete",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Email"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+  
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "patch": {
+          "tags": [
+            "common",
+            "users"
+          ],
+          "summary": "Patch Users",
+          "operationId": "patch_users_api_v1_users__patch",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Users-Input"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+  
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/notes/": {
+        "get": {
+          "tags": [
+            "common",
+            "notes"
+          ],
+          "summary": "Get Notes",
+          "operationId": "get_notes_api_v1_notes__get",
+          "parameters": [
+            {
+              "name": "entityId",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Entityid"
+              }
+            },
+            {
+              "name": "nodeLabel",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Nodelabel"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Notes"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "common",
+            "notes"
+          ],
+          "summary": "Create Note",
+          "operationId": "create_note_api_v1_notes__post",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NoteCreate"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Note"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/attachments/upload": {
+        "post": {
+          "tags": [
+            "common",
+            "attachments"
+          ],
+          "summary": "Upload Attachments",
+          "operationId": "upload_attachments_api_v1_attachments_upload_post",
+          "requestBody": {
+            "content": {
+              "multipart/form-data": {
+                "schema": {
+                  "$ref": "#/components/schemas/Body_upload_attachments_api_v1_attachments_upload_post"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+  
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/attachments/": {
+        "get": {
+          "tags": [
+            "common",
+            "attachments"
+          ],
+          "summary": "Get Attachments",
+          "operationId": "get_attachments_api_v1_attachments__get",
+          "parameters": [
+            {
+              "name": "entityId",
+              "in": "query",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "Entityid"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Attachments"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "AccessLevel": {
+          "type": "string",
+          "enum": [
+            "ADMIN",
+            "VIEWER",
+            "EDITOR"
+          ],
+          "title": "AccessLevel"
+        },
+        "Attachment": {
+          "properties": {
+            "filename": {
+              "type": "string",
+              "title": "Filename"
+            },
+            "blob_url": {
+              "type": "string",
+              "title": "Blob Url"
+            },
+            "attachment_category": {
+              "type": "string",
+              "title": "Attachment Category"
+            },
+            "attachment_type": {
+              "type": "string",
+              "title": "Attachment Type"
+            },
+            "created_by": {
+              "type": "string",
+              "title": "Created By"
+            },
+            "created_at": {
+              "type": "string",
+              "format": "date-time",
+              "title": "Created At"
+            },
+            "uploaded_by": {
+              "type": "string",
+              "title": "Uploaded By"
+            },
+            "uploaded_at": {
+              "type": "string",
+              "format": "date-time",
+              "title": "Uploaded At"
+            }
+          },
+          "type": "object",
+          "required": [
+            "filename",
+            "blob_url",
+            "attachment_category",
+            "attachment_type",
+            "created_by",
+            "created_at",
+            "uploaded_by",
+            "uploaded_at"
+          ],
+          "title": "Attachment"
+        },
+        "Attachments": {
+          "properties": {
+            "attachments": {
+              "items": {
+                "$ref": "#/components/schemas/Attachment"
+              },
+              "type": "array",
+              "title": "Attachments"
+            }
+          },
+          "type": "object",
+          "required": [
+            "attachments"
+          ],
+          "title": "Attachments"
+        },
+        "BaseBusinessEntity": {
+          "properties": {
+            "name": {
+              "type": "string",
+              "title": "Name"
+            }
+          },
+          "type": "object",
+          "required": [
+            "name"
+          ],
+          "title": "BaseBusinessEntity"
+        },
+        "BaseWriter": {
+          "properties": {
+            "alias": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Alias"
+            },
+            "name": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Name"
+            },
+            "ipi": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Ipi"
+            }
+          },
+          "type": "object",
+          "title": "BaseWriter"
+        },
+        "Body_load_file_api_v1_import_schedule_publishing_post": {
+          "properties": {
+            "file": {
+              "type": "string",
+              "format": "binary",
+              "title": "File"
+            },
+            "deal_name": {
+              "type": "string",
+              "title": "Deal Name"
+            },
+            "completed_date": {
+              "type": "string",
+              "format": "date",
+              "title": "Completed Date"
+            },
+            "right_type": {
+              "$ref": "#/components/schemas/PublishingRightsType"
+            },
+            "is_controlled": {
+              "type": "boolean",
+              "title": "Is Controlled"
+            },
+            "territories": {
+              "anyOf": [
+                {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Territories"
+            },
+            "mech_share": {
+              "type": "number",
+              "title": "Mech Share"
+            },
+            "reversion_date": {
+              "type": "string",
+              "format": "date",
+              "title": "Reversion Date"
+            }
+          },
+          "type": "object",
+          "required": [
+            "file",
+            "deal_name",
+            "completed_date",
+            "right_type",
+            "is_controlled"
+          ],
+          "title": "Body_load_file_api_v1_import_schedule_publishing_post"
+        },
+        "Body_load_file_api_v1_import_schedule_recordings_post": {
+          "properties": {
+            "file": {
+              "type": "string",
+              "format": "binary",
+              "title": "File"
+            },
+            "deal_name": {
+              "type": "string",
+              "title": "Deal Name"
+            },
+            "completed_date": {
+              "type": "string",
+              "format": "date",
+              "title": "Completed Date"
+            },
+            "rights_type": {
+              "$ref": "#/components/schemas/RecordingRightsType"
+            },
+            "business_entity": {
+              "type": "string",
+              "title": "Business Entity"
+            }
+          },
+          "type": "object",
+          "required": [
+            "file",
+            "deal_name",
+            "completed_date",
+            "rights_type",
+            "business_entity"
+          ],
+          "title": "Body_load_file_api_v1_import_schedule_recordings_post"
+        },
+        "Body_upload_attachments_api_v1_attachments_upload_post": {
+          "properties": {
+            "entity_id": {
+              "type": "string",
+              "title": "Entity Id"
+            },
+            "node_label": {
+              "type": "string",
+              "title": "Node Label"
+            },
+            "categories": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "title": "Categories"
+            },
+            "types": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "title": "Types"
+            },
+            "filenames": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "title": "Filenames"
+            },
+            "files": {
+              "items": {
+                "type": "string",
+                "format": "binary"
+              },
+              "type": "array",
+              "title": "Files"
+            }
+          },
+          "type": "object",
+          "required": [
+            "entity_id",
+            "node_label",
+            "categories",
+            "types",
+            "filenames",
+            "files"
+          ],
+          "title": "Body_upload_attachments_api_v1_attachments_upload_post"
+        },
+        "BusinessEntityResponse": {
+          "properties": {
+            "id": {
+              "type": "string",
+              "title": "Id"
+            },
+            "name": {
+              "type": "string",
+              "title": "Name"
+            },
+            "created_by": {
+              "type": "string",
+              "title": "Created By"
+            },
+            "created_at": {
+              "type": "string",
+              "format": "date-time",
+              "title": "Created At"
+            },
+            "updated_by": {
+              "type": "string",
+              "title": "Updated By"
+            },
+            "updated_at": {
+              "type": "string",
+              "format": "date-time",
+              "title": "Updated At"
+            },
+            "is_deleted": {
+              "type": "boolean",
+              "title": "Is Deleted"
+            },
+            "create_method": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Create Method"
+            },
+            "status": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Status"
+            }
+          },
+          "type": "object",
+          "required": [
+            "id",
+            "name",
+            "created_by",
+            "created_at",
+            "updated_by",
+            "updated_at",
+            "is_deleted"
+          ],
+          "title": "BusinessEntityResponse"
+        },
+        "CreateDeal": {
+          "properties": {
+            "business_group_id": {
+              "type": "string",
+              "title": "Business Group Id"
+            },
+            "name": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Name"
+            },
+            "completed_date": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Completed Date"
+            }
+          },
+          "type": "object",
+          "required": [
+            "business_group_id"
+          ],
+          "title": "CreateDeal"
+        },
+        "CreateWork": {
+          "properties": {
+            "name": {
+              "type": "string",
+              "title": "Name"
+            },
+            "iswc": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Iswc"
+            },
+            "reversion_date": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Reversion Date"
+            },
+            "territories": {
+              "anyOf": [
+                {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Territories"
+            },
+            "publishers": {
+              "anyOf": [
+                {
+                  "items": {
+                    "$ref": "#/components/schemas/PublisherLite"
+                  },
+                  "type": "array"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Publishers"
+            },
+            "writers": {
+              "anyOf": [
+                {
+                  "items": {
+                    "$ref": "#/components/schemas/WriterLite"
+                  },
+                  "type": "array"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Writers"
+            }
+          },
+          "type": "object",
+          "required": [
+            "name"
+          ],
+          "title": "CreateWork"
+        },
+        "DealResponse": {
+          "properties": {
+            "id": {
+              "type": "string",
+              "title": "Id"
+            },
+            "name": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Name"
+            },
+            "completed_date": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Completed Date"
+            },
+            "created_by": {
+              "type": "string",
+              "title": "Created By"
+            },
+            "created_at": {
+              "type": "string",
+              "format": "date-time",
+              "title": "Created At"
+            },
+            "updated_by": {
+              "type": "string",
+              "title": "Updated By"
+            },
+            "updated_at": {
+              "type": "string",
+              "format": "date-time",
+              "title": "Updated At"
+            },
+            "is_deleted": {
+              "type": "boolean",
+              "title": "Is Deleted"
+            },
+            "create_method": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Create Method"
+            },
+            "status": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Status"
+            },
+            "rights_types": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "title": "Rights Types"
+            }
+          },
+          "type": "object",
+          "required": [
+            "id",
+            "created_by",
+            "created_at",
+            "updated_by",
+            "updated_at",
+            "is_deleted"
+          ],
+          "title": "DealResponse"
+        },
+        "DeleteResponse": {
+          "properties": {
+            "id": {
+              "type": "string",
+              "title": "Id"
+            },
+            "entity_type": {
+              "type": "string",
+              "title": "Entity Type"
+            },
+            "deleted": {
+              "type": "boolean",
+              "title": "Deleted",
+              "default": true
+            },
+            "message": {
+              "type": "string",
+              "title": "Message"
+            }
+          },
+          "type": "object",
+          "required": [
+            "id",
+            "entity_type",
+            "message"
+          ],
+          "title": "DeleteResponse"
+        },
+        "Email": {
+          "properties": {
+            "email": {
+              "type": "string",
+              "title": "Email"
+            }
+          },
+          "type": "object",
+          "required": [
+            "email"
+          ],
+          "title": "Email"
+        },
+        "HTTPValidationError": {
+          "properties": {
+            "detail": {
+              "items": {
+                "$ref": "#/components/schemas/ValidationError"
+              },
+              "type": "array",
+              "title": "Detail"
+            }
+          },
+          "type": "object",
+          "title": "HTTPValidationError"
+        },
+        "MultiBusinessEntityResponse": {
+          "properties": {
+            "businessEntities": {
+              "items": {
+                "$ref": "#/components/schemas/BusinessEntityResponse"
+              },
+              "type": "array",
+              "title": "Businessentities"
+            },
+            "rowCount": {
+              "type": "integer",
+              "title": "Rowcount"
+            },
+            "offset": {
+              "type": "integer",
+              "title": "Offset"
+            },
+            "limit": {
+              "type": "integer",
+              "title": "Limit"
+            },
+            "order": {
+              "type": "string",
+              "title": "Order"
+            }
+          },
+          "type": "object",
+          "required": [
+            "businessEntities",
+            "rowCount",
+            "offset",
+            "limit",
+            "order"
+          ],
+          "title": "MultiBusinessEntityResponse"
+        },
+        "MultiDealResponse": {
+          "properties": {
+            "deals": {
+              "items": {
+                "$ref": "#/components/schemas/DealResponse"
+              },
+              "type": "array",
+              "title": "Deals"
+            },
+            "rowCount": {
+              "type": "integer",
+              "title": "Rowcount"
+            },
+            "offset": {
+              "type": "integer",
+              "title": "Offset"
+            },
+            "limit": {
+              "type": "integer",
+              "title": "Limit"
+            },
+            "order": {
+              "type": "string",
+              "title": "Order"
+            }
+          },
+          "type": "object",
+          "required": [
+            "deals",
+            "rowCount",
+            "offset",
+            "limit",
+            "order"
+          ],
+          "title": "MultiDealResponse"
+        },
+        "Note": {
+          "properties": {
+            "note": {
+              "type": "string",
+              "title": "Note"
+            },
+            "created_by": {
+              "type": "string",
+              "title": "Created By"
+            },
+            "created_at": {
+              "type": "string",
+              "format": "date-time",
+              "title": "Created At"
+            }
+          },
+          "type": "object",
+          "required": [
+            "note",
+            "created_by",
+            "created_at"
+          ],
+          "title": "Note"
+        },
+        "NoteCreate": {
+          "properties": {
+            "note": {
+              "type": "string",
+              "title": "Note"
+            },
+            "node_label": {
+              "type": "string",
+              "title": "Node Label"
+            },
+            "entity_id": {
+              "type": "string",
+              "title": "Entity Id"
+            }
+          },
+          "type": "object",
+          "required": [
+            "note",
+            "node_label",
+            "entity_id"
+          ],
+          "title": "NoteCreate"
+        },
+        "Notes": {
+          "properties": {
+            "notes": {
+              "items": {
+                "$ref": "#/components/schemas/Note"
+              },
+              "type": "array",
+              "title": "Notes"
+            }
+          },
+          "type": "object",
+          "required": [
+            "notes"
+          ],
+          "title": "Notes"
+        },
+        "PublisherLite": {
+          "properties": {
+            "deal_id": {
+              "type": "string",
+              "title": "Deal Id"
+            },
+            "id": {
+              "type": "string",
+              "title": "Id"
+            },
+            "share": {
+              "type": "number",
+              "title": "Share"
+            },
+            "mech_share": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Mech Share"
+            },
+            "is_controlled": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Is Controlled"
+            }
+          },
+          "type": "object",
+          "required": [
+            "deal_id",
+            "id",
+            "share"
+          ],
+          "title": "PublisherLite"
+        },
+        "PublishingRightsType": {
+          "type": "string",
+          "enum": [
+            "writer_share",
+            "publisher_share",
+            "administration_rights"
+          ],
+          "title": "PublishingRightsType"
+        },
+        "RecordingRightsType": {
+          "type": "string",
+          "enum": [
+            "recording_ownership",
+            "distribution_rights",
+            "neighboring_rights"
+          ],
+          "title": "RecordingRightsType"
+        },
+        "User": {
+          "properties": {
+            "uid": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Uid"
+            },
+            "email": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Email"
+            },
+            "access_level": {
+              "$ref": "#/components/schemas/AccessLevel"
+            }
+          },
+          "type": "object",
+          "required": [
+            "access_level"
+          ],
+          "title": "User"
+        },
+        "Users-Input": {
+          "properties": {
+            "users": {
+              "items": {
+                "$ref": "#/components/schemas/User"
+              },
+              "type": "array",
+              "title": "Users"
+            }
+          },
+          "type": "object",
+          "required": [
+            "users"
+          ],
+          "title": "Users"
+        },
+        "Users-Output": {
+          "properties": {
+            "users": {
+              "items": {
+                "$ref": "#/components/schemas/User"
+              },
+              "type": "array",
+              "title": "Users"
+            }
+          },
+          "type": "object",
+          "required": [
+            "users"
+          ],
+          "title": "Users"
+        },
+        "ValidationError": {
+          "properties": {
+            "loc": {
+              "items": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "integer"
+                  }
+                ]
+              },
+              "type": "array",
+              "title": "Location"
+            },
+            "msg": {
+              "type": "string",
+              "title": "Message"
+            },
+            "type": {
+              "type": "string",
+              "title": "Error Type"
+            }
+          },
+          "type": "object",
+          "required": [
+            "loc",
+            "msg",
+            "type"
+          ],
+          "title": "ValidationError"
+        },
+        "WriterLite": {
+          "properties": {
+            "deal_id": {
+              "type": "string",
+              "title": "Deal Id"
+            },
+            "id": {
+              "type": "string",
+              "title": "Id"
+            },
+            "share": {
+              "type": "number",
+              "title": "Share"
+            }
+          },
+          "type": "object",
+          "required": [
+            "deal_id",
+            "id",
+            "share"
+          ],
+          "title": "WriterLite"
+        }
+      }
+    }
+  }

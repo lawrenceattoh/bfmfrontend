@@ -28,8 +28,8 @@ function SignInScreen() {
     };
 
     return (
-        <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" minHeight="100vh">
-            <Typography variant="h4" gutterBottom>
+        <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" minHeight="100vh" bgcolor={'#121212'}>
+            <Typography variant="h4" gutterBottom color='#fff'>
                 Welcome to RMS
             </Typography>
             <Button 

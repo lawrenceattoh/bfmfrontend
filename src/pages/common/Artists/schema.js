@@ -4,6 +4,6 @@ export const displaySchema = [
 ];
 
 export const filterSchema = [
-    { key: "artist_id", label: "Id", isFilterable: true },
-    { key: "name", label: "Name", isFilterable: true },
+    { key: "artist_id", label: "Search by ID", isFilterable: true },
+    { key: "name", label: "Search by Name", isFilterable: true },
 ];

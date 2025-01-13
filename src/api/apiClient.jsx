@@ -5,6 +5,8 @@ import { getCurrentToken } from "../services/authService";
 
 const BASE_URL = "http://localhost:8000/api/v1"; // Instead of using the local host backend, we are going to use the API from the server
 
+// const BASE_URL = "https://fastapi-backend-neo4j-976350951517.europe-west2.run.app/api/v1"; // Instead of using the local host backend, we are going to use the API from the server
+
 const apiClient = axios.create({
     baseURL: BASE_URL,
     timeout: 10000,
